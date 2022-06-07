@@ -76,6 +76,7 @@ build: ## Build manager binary.
 	CGO_ENABLED=0 go build -o bin/manager ./cmd/...
 
 .PHONY: build-container
+build-container: export GOOS=linux
 build-container: build ## Builds provisioner container image locally
 	$(CONTAINER_RUNTIME) build -f Dockerfile -t $(IMG) $(BIN_DIR)
 
